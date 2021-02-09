@@ -10,9 +10,11 @@ ul li{
   list-style: none;
 }
 main{
+  justify-content: center;
   flex-wrap: wrap;
 }
 .locandina{
+  margin:10px;
   width:180px;
   height:250px;
   border:1px solid black;
