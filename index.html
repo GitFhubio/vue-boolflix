@@ -19,6 +19,12 @@
 <input type="text" name="" value="" v-model="searchfilm">
 <button type="button" name="button" @click="Ricercafilm">Cerca film</button>
   </div>
+  <ul v-for="(film,index) in listfilm">
+    <li>Il titolo del film è : {{film.title}}</li>
+    <li>Il titolo originale è: {{film.original_title}}</li>
+    <li>La lingua originale è: {{film.original_language}}</li>
+    <li>Il voto medio del film è: {{film.vote_average}}</li>
+  </ul>
     </div>
 
     <!-- js -->
