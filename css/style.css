@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  background-color: #000;
+}
 .flex{
   display:flex;
 }
@@ -23,8 +26,9 @@ main{
   flex-wrap: wrap;
 }
 .locandina{
+  color:#fff;
   margin:10px;
   width:180px;
   height:250px;
-  border:1px solid black;
+  border:1px solid #fff;
 }
