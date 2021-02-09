@@ -31,4 +31,6 @@ main{
   width:180px;
   height:250px;
   border:1px solid #fff;
+  background-position: center;
+  background-size: cover;
 }
