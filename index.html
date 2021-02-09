@@ -15,10 +15,13 @@
   </head>
   <body>
     <div id="root">
+<header class="flex">
+<img class="logo" src="img/logo.png" alt="">
   <div class="searchbar">
 <input type="text" name="" value="" v-model="searchfilm">
 <button type="button" name="button" @click="Ricercafilm">Cerca film</button>
   </div>
+</header>
 <main class="flex">
   <div class="locandina" v-for="film in listfilm">
 <ul>
