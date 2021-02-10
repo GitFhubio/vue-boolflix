@@ -103,7 +103,22 @@ let app = new Vue({
              self.genresList=self.genresList.concat(response.data.genres);
 
            })
-     }
+     },
+     getProductGenre(product){
+     let productgenresList = [];
+     this.genresList.forEach((genre, i) => {
+       product.genre_ids.forEach((genre_id, x) => {
+           if(genre.id == genre_id && !productgenresList.includes(genre.name)){
+             productgenresList.push(genre.name);
+           }
+       });
+
+     });
+     console.log (productgenresList);
+     return productgenresList.join(', ')
+
+   }
+
       }
       ,
       mounted(){

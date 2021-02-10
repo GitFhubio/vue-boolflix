@@ -29,18 +29,19 @@
   <li v-if="product.original_title!=product.title"><strong>Titolo originale:</strong> {{product.original_title}}</li>
   </ul>
   <ul v-else>
-  <li>Il titolo è: {{product.name}}</li>
+  <li><strong>Titolo:</strong> {{product.name}}</li>
     <li v-if="product.original_name!=product.name"><strong>Titolo originale:</strong>{{product.original_name}}</li></ul>
-    <ul>
+    <!-- <ul> -->
       <!-- <li><strong>Lingua originale</strong> {{product.original_language}}</li> -->
       <!-- <li>Il voto medio è: {{product.vote_average}}</li> -->
-    </ul>
+    <!-- </ul> -->
+    <p>{{getProductGenre(product)}}</p>
     <div class="stars">
   <strong>Voto:</strong><i v-for="i in getRate(product)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(product))" class="far fa-star" style="color:yellow;"></i>
     </div>
   <img v-if="getFlag(product)" style="width:20px;height:20px;" :src="`img/${product.original_language}.png`">
  <img v-else style="width:20px;height:20px;" :src="`img/notfound.png`">
- <p><strong>Cast:</strong> {{castList.join(', ')}}</p>
+ <p v-if="castList"><strong>Cast:</strong> {{castList.join(', ')}}</p>
  <p v-if="product.overview"><strong>Overview:</strong> {{product.overview}}</p>
   </div>
   </div>
