@@ -18,11 +18,18 @@
 <header class="flex">
 <img class="logo" src="img/logo.png" alt="">
   <div class="searchbar">
+    <select class="" name="" v-model="selected">
+      <option>all</option>
+    <option>Comedy</option>
+    <option>Family</option>
+    <option>Animation</option>
+    <option>Drama</option>
+    </select>
 <input type="text" name="" placeholder="Cerca..." v-model="search" @keyup.enter="Ricerca">
   </div>
 </header>
 <main class="flex">
-<div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)">
+<div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)" v-if="isgenreinList(product)">
 <div class="layover flex">
   <ul v-if="isFilm(product)">
   <li ><strong>Titolo: </strong> {{product.title}} </li>
@@ -35,13 +42,13 @@
       <!-- <li><strong>Lingua originale</strong> {{product.original_language}}</li> -->
       <!-- <li>Il voto medio è: {{product.vote_average}}</li> -->
     <!-- </ul> -->
-    <p>{{getProductGenre(product)}}</p>
+    <p><strong>Genere:</strong>{{getProductGenre(product)}}</p>
     <div class="stars">
   <strong>Voto:</strong><i v-for="i in getRate(product)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(product))" class="far fa-star" style="color:yellow;"></i>
     </div>
   <img v-if="getFlag(product)" style="width:20px;height:20px;" :src="`img/${product.original_language}.png`">
  <img v-else style="width:20px;height:20px;" :src="`img/notfound.png`">
- <p v-if="castList"><strong>Cast:</strong> {{castList.join(', ')}}</p>
+ <p v-if="castList.length>0"><strong>Cast:</strong> {{castList.join(', ')}}</p>
  <p v-if="product.overview"><strong>Overview:</strong> {{product.overview}}</p>
   </div>
   </div>

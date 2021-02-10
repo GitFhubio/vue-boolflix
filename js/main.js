@@ -9,6 +9,7 @@ let app = new Vue({
     castList:[],
     genresList:[],
     cast:[],
+    selected:'all',
    api_key:'69110b8b48cfb9568cc058faf0c1d23c',
    endpoint:'https://api.themoviedb.org/3',
   },
@@ -117,6 +118,19 @@ let app = new Vue({
      console.log (productgenresList);
      return productgenresList.join(', ')
 
+   },
+   isgenreinList(product){
+     if(this.selected=="all"){
+       return true;
+     } else {
+     let array= this.getProductGenre(product).split(', ');
+     console.log(array);
+      if (array.includes(this.selected)){
+        return true;
+      } else {
+        return false;
+      }
+     }
    }
 
       }
