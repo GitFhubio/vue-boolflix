@@ -2,6 +2,7 @@ let app = new Vue({
   el: "#root",
   data: {
     searchfilm:"",
+    array_lang:['it','en','fr','es','hr'],
    listfilm:[],
    api_key:'69110b8b48cfb9568cc058faf0c1d23c',
    endpoint:'https://api.themoviedb.org/3',
@@ -32,7 +33,12 @@ let app = new Vue({
       getRate(item){
        // return Math.round(item.vote_average/2);
              return Math.ceil(item.vote_average/2);
-       }
+       },
+       getFlag(item){
+       if (this.array_lang.includes(item.original_language)){
+         return true;}
+         else{return false}
+       },
 
 
 
