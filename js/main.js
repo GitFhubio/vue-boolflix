@@ -87,11 +87,28 @@ let app = new Vue({
                      }
                    });
                  }
-           }
+           },
+           getGenresList() {
+             let self=this;
+             axios
+             .get(this.endpoint+'/genre/movie/list?api_key='+this.api_key)
+             .then(response => {
+             console.log(response.data.genres);
+             self.genresList=response.data.genres;
+             });
+             axios
+             .get(this.endpoint+'/genre/tv/list?api_key='+this.api_key)
+             .then(response => {
+             console.log(response.data.genres);
+             self.genresList=self.genresList.concat(response.data.genres);
 
+           })
+     }
+      }
+      ,
+      mounted(){
 
-
-
+        this.getGenresList();
       }
 
 });
