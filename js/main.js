@@ -67,7 +67,7 @@ let app = new Vue({
             language='dk';
             break;
         }
-        return 'https://flagcdn.com/16x12/'+language+'.png';
+        return 'https://flagcdn.com/48x36/'+language+'.png';
        // return 'https://www.countryflags.io/'+x+'/flat/64.png'
      },
        // https://dmitripavlutin.com/check-if-object-has-property-javascript/
