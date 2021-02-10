@@ -6,6 +6,9 @@ let app = new Vue({
     films:[],
     series:[],
     products:[],
+    castList:[],
+    genresList:[],
+    cast:[],
    api_key:'69110b8b48cfb9568cc058faf0c1d23c',
    endpoint:'https://api.themoviedb.org/3',
   },
@@ -28,8 +31,7 @@ let app = new Vue({
               this.products=this.films.concat(this.series);
               console.log(this.products)
             })
-
-    },
+  },
       imageGenerator(item){
         // per mettere locandina
         // https://www.themoviedb.org/talk/568e3711c3a36858fc002384
@@ -58,9 +60,34 @@ let app = new Vue({
        } else{
          return false;
        }
+     },
 
+     getCredits(product){
+       // qui tutto il passaggio di consegne self this potevo evitarlo se ho capito bene poi vedo
+         let self=this;
+           self.castList=[];
+             if(self.isFilm(product)){
+               axios
+                 .get(this.endpoint+'/movie/'+product.id+'/credits?api_key='+this.api_key)
+                 .then( response => {
+                   self.cast=response.data.cast.slice(0,5);
+                   console.log(self.cast);
+                   for (var i = 0; i < self.cast.length; i++) {
+                     self.castList.push(self.cast[i].name);
+                   }
+                 })
+               } else{
 
-     }
+                 axios
+                 .get(this.endpoint+'/tv/'+product.id+'/credits?api_key='+this.api_key)
+                   .then( response => {
+                    self.cast=response.data.cast;
+                     for (var i = 0; i < self.cast.length; i++) {
+                       self.castList.push(self.cast[i].name);
+                     }
+                   });
+                 }
+           }
 
 
 

@@ -22,7 +22,7 @@
   </div>
 </header>
 <main class="flex">
-<div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }">
+<div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)">
 <div class="layover flex">
   <ul v-if="isFilm(product)">
   <li ><strong>Titolo: </strong> {{product.title}} </li>
@@ -40,6 +40,7 @@
     </div>
   <img v-if="getFlag(product)" style="width:20px;height:20px;" :src="`img/${product.original_language}.png`">
  <img v-else style="width:20px;height:20px;" :src="`img/notfound.png`">
+ <p><strong>Cast:</strong> {{castList.join(', ')}}</p>
  <p v-if="product.overview"><strong>Overview:</strong> {{product.overview}}</p>
   </div>
   </div>
