@@ -18,21 +18,21 @@
 <header class="flex">
 <img class="logo" src="img/logo.png" alt="">
   <div class="searchbar">
-<input type="text" name="" value="" v-model="searchfilm">
-<button type="button" name="button" @click="Ricercafilm">Cerca film</button>
+<input type="text" name="" value="" v-model="search">
+<button type="button" name="button" @click="Ricerca">Cerca film</button>
   </div>
 </header>
 <main class="flex">
-<div class="locandina" v-for="film in listfilm" :style="{ 'background-image' : 'url(\'' + imageGenerator(film) + '\')' }">
+<div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }">
 
 <ul>
-    <li>Il titolo del film è : {{film.title}}</li>
-    <li>Il titolo originale è: {{film.original_title}}</li>
-    <li>La lingua originale è: {{film.original_language}}</li>
-    <li>Il voto medio del film è: {{film.vote_average}}</li>
+    <li>Il titolo del film è : {{product.title}}</li>
+    <li>Il titolo originale è: {{product.original_title}}</li>
+    <li>La lingua originale è: {{product.original_language}}</li>
+    <li>Il voto medio del film è: {{product.vote_average}}</li>
   </ul>
-  <i v-for="i in getRate(film)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(film))" class="far fa-star" style="color:yellow;"></i>
-  <img v-if="getFlag(film)" style="width:20px;height:20px;" :src="`img/${film.original_language}.png`">
+  <i v-for="i in getRate(product)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(product))" class="far fa-star" style="color:yellow;"></i>
+  <img v-if="getFlag(product)" style="width:20px;height:20px;" :src="`img/${product.original_language}.png`">
  <img v-else style="width:20px;height:20px;" :src="`img/notfound.png`">
   </div>
 </main>

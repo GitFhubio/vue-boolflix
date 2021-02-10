@@ -1,24 +1,35 @@
 let app = new Vue({
   el: "#root",
   data: {
-    searchfilm:"",
+    search:"",
     array_lang:['it','en','fr','es','hr'],
-   listfilm:[],
+    films:[],
+    series:[],
+    products:[],
    api_key:'69110b8b48cfb9568cc058faf0c1d23c',
    endpoint:'https://api.themoviedb.org/3',
   },
   methods:{
 
-      Ricercafilm(){
-          axios
-            .get(this.endpoint+'/search/movie?api_key='+this.api_key +'&query='+this.searchfilm)
-            .then( response => {
-              console.log(response.data.results);
-              this.listfilm=response.data.results;
-              console.log(this.listfilm);
+    Ricerca(){
+        axios
+          .get(this.endpoint+'/search/movie?api_key='+this.api_key +'&query='+this.search)
+          .then( response => {
+            this.films=response.data.results;
 
+          })
+
+          axios
+            .get(this.endpoint+'/search/tv?api_key='+this.api_key +'&query='+this.search)
+            .then( response => {
+              this.series=response.data.results;
+              console.log(this.series);
+              console.log(this.films);
+              this.products=this.films.concat(this.series);
+              console.log(this.products)
             })
-      },
+
+    },
       imageGenerator(item){
         // per mettere locandina
         // https://www.themoviedb.org/talk/568e3711c3a36858fc002384
