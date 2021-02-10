@@ -50,7 +50,17 @@ let app = new Vue({
          return true;}
          else{return false}
        },
+       // https://dmitripavlutin.com/check-if-object-has-property-javascript/
+       // hasOwnProperty() mi permette di fare una distinzione tra serie e film sulla base di proprietà che hanno solo gli elementi dell'uno o dell'altro
+       isFilm(item){
+       if (item.hasOwnProperty('original_title') || item.hasOwnProperty('title')) {
+         return true;
+       } else{
+         return false;
+       }
 
+
+     }
 
 
 

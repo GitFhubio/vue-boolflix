@@ -25,12 +25,17 @@
 <main class="flex">
 <div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }">
 
-<ul>
-    <li>Il titolo del film è : {{product.title}}</li>
-    <li>Il titolo originale è: {{product.original_title}}</li>
-    <li>La lingua originale è: {{product.original_language}}</li>
-    <li>Il voto medio del film è: {{product.vote_average}}</li>
+  <ul v-if="isFilm(product)">
+  <li >Il titolo è: {{product.title}} </li>
+  <li v-if="product.original_title!=product.title">Il titolo originale è: {{product.original_title}}</li>
   </ul>
+  <ul v-else>
+  <li>Il titolo è: {{product.name}}</li>
+    <li v-if="product.original_name!=product.name">Il titolo originale è: {{product.original_name}}</li></ul>
+    <ul>
+      <li>La lingua originale è: {{product.original_language}}</li>
+      <li>Il voto medio è: {{product.vote_average}}</li>
+    </ul>
   <i v-for="i in getRate(product)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(product))" class="far fa-star" style="color:yellow;"></i>
   <img v-if="getFlag(product)" style="width:20px;height:20px;" :src="`img/${product.original_language}.png`">
  <img v-else style="width:20px;height:20px;" :src="`img/notfound.png`">
