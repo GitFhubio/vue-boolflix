@@ -18,8 +18,7 @@
 <header class="flex">
 <img class="logo" src="img/logo.png" alt="">
   <div class="searchbar">
-<input type="text" name="" value="" v-model="search">
-<button type="button" name="button" @click="Ricerca">Cerca film</button>
+<input type="text" name="" placeholder="Cerca..." v-model="search" @keyup.enter="Ricerca">
   </div>
 </header>
 <main class="flex">
