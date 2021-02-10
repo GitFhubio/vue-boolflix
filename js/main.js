@@ -49,6 +49,8 @@ let app = new Vue({
              return Math.ceil(item.vote_average/2);
        },
        getFlag(item){
+       //   ero partito con l'idea di farmi array di bandiere con 
+       // bandiere scaricate in img ma poi ho preso direttamente link
        // if (this.array_lang.includes(item.original_language)){
        //   return true;}
        //   else{return false}
