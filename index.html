@@ -42,7 +42,7 @@
       <!-- <li><strong>Lingua originale</strong> {{product.original_language}}</li> -->
       <!-- <li>Il voto medio è: {{product.vote_average}}</li> -->
     <!-- </ul> -->
-    <p><strong>Genere:</strong>{{getProductGenre(product)}}</p>
+    <p v-if="getProductGenre(product)"><strong>Genere:</strong>{{getProductGenre(product)}}</p>
     <div class="stars">
   <strong>Voto:</strong><i v-for="i in getRate(product)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(product))" class="far fa-star" style="color:yellow;"></i>
     </div>
