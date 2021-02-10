@@ -28,7 +28,12 @@ let app = new Vue({
            url_img='img/nocopertina.jpg'
          }
         return url_img;
-      }
+      },
+      getRate(item){
+       // return Math.round(item.vote_average/2);
+             return Math.ceil(item.vote_average/2);
+       }
+
 
 
 

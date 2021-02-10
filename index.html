@@ -30,6 +30,7 @@
     <li>Il titolo originale è: {{film.original_title}}</li>
     <li>La lingua originale è: {{film.original_language}}</li>
     <li>Il voto medio del film è: {{film.vote_average}}</li>
+<i v-for="i in getRate(film)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(film))" class="far fa-star" style="color:yellow;"></i>
   </ul>
   </div>
 </main>
