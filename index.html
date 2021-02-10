@@ -30,6 +30,14 @@
 </header>
 <main class="flex">
 <div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)" v-if="isgenreinList(product)">
+<div v-if="product.poster_path == null">
+  <h3 v-if="isFilm(product)">
+    {{product.title}}
+  </h3>
+  <h3 v-else>
+    {{product.name}}
+  </h3>
+</div>
 <div class="layover flex">
   <ul v-if="isFilm(product)">
   <li ><strong>Titolo: </strong> {{product.title}} </li>

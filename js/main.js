@@ -40,7 +40,7 @@ let app = new Vue({
          let size='w342';
          let url_img=uri+size+item.poster_path;
          if(item.poster_path == null){
-           url_img='img/nocopertina.jpg'
+           url_img='img/nocopertina.png'
          }
         return url_img;
       },
@@ -49,7 +49,7 @@ let app = new Vue({
              return Math.ceil(item.vote_average/2);
        },
        getFlag(item){
-       //   ero partito con l'idea di farmi array di bandiere con 
+       //   ero partito con l'idea di farmi array di bandiere con
        // bandiere scaricate in img ma poi ho preso direttamente link
        // if (this.array_lang.includes(item.original_language)){
        //   return true;}

@@ -28,6 +28,7 @@ main{
   flex-wrap: wrap;
 }
 .locandina{
+  position:relative;
   color:#fff;
   margin:10px;
   width:180px;
@@ -37,6 +38,8 @@ main{
   background-size: cover;
 }
 .layover{
+  position:absolute;
+  top:0;
   padding:30px 10px 0 10px;
     display: flex;
     opacity:0;
@@ -58,3 +61,15 @@ main{
 ::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */
     background: transparent;}  /* Optional: just make scrollbar invisible */
+
+h3{
+  word-spacing: 9999999px;
+  font-size: 26px;
+  transform: skewY(-3deg);
+  line-height: 80%;
+  padding-top: 20px;
+  padding-left: 10px;
+color: #72613c;
+text-transform: uppercase;
+text-shadow: 1px 1px 5px #fff;
+}
