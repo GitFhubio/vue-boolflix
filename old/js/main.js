@@ -5,7 +5,6 @@ let app = new Vue({
     // array_lang:['it','en','fr','es','hr'],
     films:[],
     series:[],
-    genres:[],
     products:[],
     castList:[],
     genresList:[],
@@ -114,22 +113,16 @@ let app = new Vue({
              axios
              .get(this.endpoint+'/genre/movie/list?api_key='+this.api_key)
              .then(response => {
-
+             console.log(response.data.genres);
              self.genresList=response.data.genres;
              });
              axios
              .get(this.endpoint+'/genre/tv/list?api_key='+this.api_key)
              .then(response => {
+             console.log(response.data.genres);
              self.genresList=self.genresList.concat(response.data.genres);
-              console.log(self.genresList);
-               self.genresList.forEach((item, i) => {
-                   if (!self.genres.includes(item.name)){
-                     self.genres.push(item.name);
-                   }
-               });
 
            })
-           console.log(self.genres);
      },
      getProductGenre(product){
      let productgenresList = [];

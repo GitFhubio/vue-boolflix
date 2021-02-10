@@ -20,7 +20,10 @@
   <div class="searchbar">
     <select class="" name="" v-model="selected">
       <option>all</option>
-      <option v-for="genre in genres">{{genre}}</option>
+    <option>Comedy</option>
+    <option>Family</option>
+    <option>Animation</option>
+    <option>Drama</option>
     </select>
 <input type="text" name="" placeholder="Cerca..." v-model="search" @keyup.enter="Ricerca">
   </div>
