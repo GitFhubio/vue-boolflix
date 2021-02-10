@@ -2,7 +2,7 @@ let app = new Vue({
   el: "#root",
   data: {
     search:"",
-    array_lang:['it','en','fr','es','hr'],
+    // array_lang:['it','en','fr','es','hr'],
     films:[],
     series:[],
     products:[],
@@ -49,10 +49,24 @@ let app = new Vue({
              return Math.ceil(item.vote_average/2);
        },
        getFlag(item){
-       if (this.array_lang.includes(item.original_language)){
-         return true;}
-         else{return false}
-       },
+       // if (this.array_lang.includes(item.original_language)){
+       //   return true;}
+       //   else{return false}
+       let language=item.original_language;
+       switch (language){
+        case 'en':
+         language='gb';
+         break;
+         case 'ja':
+          language='jp';
+          break;
+          case 'fa':
+           language='ir';
+           break;
+        }
+        return 'https://flagcdn.com/16x12/'+language+'.png';
+       // return 'https://www.countryflags.io/'+x+'/flat/64.png'
+     },
        // https://dmitripavlutin.com/check-if-object-has-property-javascript/
        // hasOwnProperty() mi permette di fare una distinzione tra serie e film sulla base di proprietà che hanno solo gli elementi dell'uno o dell'altro
        isFilm(item){
