@@ -50,7 +50,7 @@ main{
     background-color: #000000e0;
     color: white;
     font-size:20px;
-    line-height: 19px;
+    line-height: 30px;
     flex-direction: column;
     overflow-y: auto;
 }
