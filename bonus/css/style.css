@@ -1,0 +1,86 @@
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #2d3843;
+}
+.flex{
+  display:flex;
+}
+ul li{
+  list-style: none;
+}
+header{
+  justify-content: space-between;
+  align-items:center;
+  height:80px;
+  background-color: #000;
+  padding:0 20px;
+}
+.logo{
+  width:120px;
+  height:auto;
+  margin-right: 10px;
+}
+main{
+  width:100%;
+  overflow-x:scroll;
+}
+.locandina{
+  overflow-x:hidden;
+  position:relative;
+  color:#fff;
+  margin:10px;
+  width:15vw;
+  height:calc(100vh - 115px);
+  border:1px solid #fff;
+  background-position: center;
+  background-size: cover;
+}
+.layover{
+  position:absolute;
+  top:0;
+  padding:30px 10px 0 10px;
+    display: flex;
+    opacity:0;
+    height:100%;
+    width:100%;
+    background-color: #000000e0;
+    color: white;
+    font-size: 14px;
+    line-height: 19px;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.layover:hover{
+    opacity:1;
+
+}
+/* https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll */
+
+.layover::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;}  /* Optional: just make scrollbar invisible */
+
+h3{
+  word-spacing: 9999999px;
+  font-size: 23px;
+  transform: skewY(-3deg);
+  line-height: 80%;
+  padding-top: 20px;
+  padding-left: 10px;
+color: #72613c;
+text-transform: uppercase;
+text-shadow: 1px 1px 5px #fff;
+}
+
+.categorie{
+  align-items: center;
+}
+.nav-left h4{
+  cursor: pointer;
+  color:white;
+  padding-left: 12px;
+}

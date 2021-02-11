@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolflix</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/b1c0bf61f1.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="root">
+<header class="flex">
+<div class="nav-left flex">
+<img class="logo" src="img/logo.png" alt="">
+<div class="categorie flex">
+  <h4 @click="onHoverSerie">Serie TV</h4>
+  <h4 @click="onHoverFilm">Film</h4>
+<h4>Aggiunti di recente</h4>
+<h4>La mia Lista</h4>
+</div>
+</div>
+  <div class="searchbar">
+    <select class="" name="" v-model="selected">
+      <option>all</option>
+      <option v-for="genre in genres">{{genre}}</option>
+    </select>
+<input type="text" name="" placeholder="Cerca..." v-model="search" @keyup.enter="Ricerca">
+  </div>
+</header>
+<main class="flex">
+  <div class="inner flex">
+<div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)" v-if="isgenreinList(product)">
+<div v-if="product.poster_path == null">
+  <h3 v-if="isFilm(product)">
+    {{product.title}}
+  </h3>
+  <h3 v-else>
+    {{product.name}}
+  </h3>
+</div>
+<div class="layover flex">
+  <ul v-if="isFilm(product)">
+  <li ><strong>Titolo: </strong> {{product.title}} </li>
+  <li v-if="product.original_title!=product.title"><strong>Titolo originale:</strong> {{product.original_title}}</li>
+  </ul>
+  <ul v-else>
+  <li><strong>Titolo:</strong> {{product.name}}</li>
+    <li v-if="product.original_name!=product.name"><strong>Titolo originale:</strong>{{product.original_name}}</li></ul>
+    <!-- <ul> -->
+      <!-- <li><strong>Lingua originale</strong> {{product.original_language}}</li> -->
+      <!-- <li>Il voto medio è: {{product.vote_average}}</li> -->
+    <!-- </ul> -->
+    <p v-if="getProductGenre(product)"><strong>Genere:</strong>{{getProductGenre(product)}}</p>
+    <div class="stars">
+  <strong>Voto:</strong><i v-for="i in getRate(product)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(product))" class="far fa-star" style="color:yellow;"></i>
+    </div>
+    <div v-if="getFlag(product)" >
+  <img style="width:30px;height:auto;" :src="'png/'+product.original_language+'.png'">
+    </div>
+ <div v-else><strong>Language:</strong> {{product.original_language.toUpperCase()}}</div>
+ <p v-if="castList.length>0"><strong>Cast:</strong> {{castList.join(', ')}}</p>
+ <p v-if="product.overview"><strong>Overview:</strong> {{product.overview}}</p>
+  </div>
+  </div>
+</div>
+</main>
+    </div>
+    <!-- js -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
