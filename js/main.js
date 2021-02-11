@@ -69,6 +69,9 @@ let app = new Vue({
            case 'da':
             language='dk';
             break;
+            case 'zh':
+             language='cn';
+             break;
         }
         return 'https://flagcdn.com/48x36/'+language+'.png';
        // return 'https://www.countryflags.io/'+x+'/flat/64.png'
