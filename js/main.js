@@ -17,11 +17,12 @@ let app = new Vue({
   methods:{
 
     Ricerca(){
+      this.products=[];
         axios
           .get(this.endpoint+'/search/movie?api_key='+this.api_key +'&query='+this.search)
           .then( response => {
             this.films=response.data.results;
-
+          this.products=this.products.concat(this.films);
           })
 
           axios
@@ -30,7 +31,7 @@ let app = new Vue({
               this.series=response.data.results;
               console.log(this.series);
               console.log(this.films);
-              this.products=this.films.concat(this.series);
+              this.products=this.products.concat(this.series);
               console.log(this.products)
             })
   },
