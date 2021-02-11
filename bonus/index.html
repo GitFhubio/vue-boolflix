@@ -60,7 +60,7 @@
     <div class="stars">
   <strong>Voto:</strong><i v-for="i in getRate(product)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(product))" class="far fa-star" style="color:yellow;"></i>
     </div>
-    <div v-if="getFlag(product)" >
+    <div class="flag" v-if="getFlag(product)" >
   <img style="width:30px;height:auto;" :src="'png/'+product.original_language+'.png'">
     </div>
  <div v-else><strong>Language:</strong> {{product.original_language.toUpperCase()}}</div>

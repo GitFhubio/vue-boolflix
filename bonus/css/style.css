@@ -33,7 +33,7 @@ main{
   position:relative;
   color:#fff;
   margin:10px;
-  width:15vw;
+  width:25vw;
   height:calc(100vh - 115px);
   border:1px solid #fff;
   background-position: center;
@@ -49,7 +49,7 @@ main{
     width:100%;
     background-color: #000000e0;
     color: white;
-    font-size: 14px;
+    font-size:20px;
     line-height: 19px;
     flex-direction: column;
     overflow-y: auto;
@@ -57,6 +57,10 @@ main{
 .layover:hover{
     opacity:1;
 
+}
+.flag{
+  margin:10px 0;
+  text-align: center;
 }
 /* https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll */
 
@@ -66,7 +70,7 @@ main{
 
 h3{
   word-spacing: 9999999px;
-  font-size: 23px;
+  font-size: 35px;
   transform: skewY(-3deg);
   line-height: 80%;
   padding-top: 20px;
