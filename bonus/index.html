@@ -18,12 +18,12 @@
 <header class="flex">
 <div class="nav-left flex">
 <img class="logo" src="img/logo.png" alt="">
-<div class="categorie flex">
-  <h4 @click="onHoverSerie">Serie TV</h4>
-  <h4 @click="onHoverFilm">Film</h4>
-<h4>Aggiunti di recente</h4>
-<h4>La mia Lista</h4>
-</div>
+<ul class="categorie flex">
+  <li @click="onHoverSerie">Serie TV</li>
+  <li @click="onHoverFilm">Film</li>
+<li>Aggiunti di recente</li>
+<li>La mia Lista</li>
+</ul>
 </div>
   <div class="searchbar">
     <select class="" name="" v-model="selected">
