@@ -28,12 +28,14 @@ let app = new Vue({
     castList:[],
     genresList:[],
     cast:[],
+    searchActive:false,
     selected:'all',
    api_key:'69110b8b48cfb9568cc058faf0c1d23c',
    endpoint:'https://api.themoviedb.org/3',
   },
   methods:{
   Ricerca(){
+this.searchActive=true;
 this.RicercaFilms()
 this.RicercaSerie();
 },
@@ -119,26 +121,25 @@ this.RicercaSerie();
          return false;
        }
      },
-
+     getCastNames(response){
+      this.cast=response.data.cast.slice(0,5);
+       for (var i = 0; i < this.cast.length; i++) {
+         this.castList.push(this.cast[i].name);
+     }}
+,
      getCredits(product){
            this.castList=[];
              if(this.isFilm(product)){
                axios
                  .get(this.endpoint+'/movie/'+product.id+'/credits?api_key='+this.api_key)
                  .then( response => {
-                   this.cast=response.data.cast.slice(0,5);
-                   for (var i = 0; i < this.cast.length; i++) {
-                     this.castList.push(this.cast[i].name);
-                   }
+                 this.getCastNames();
                  })
                } else{
                  axios
                  .get(this.endpoint+'/tv/'+product.id+'/credits?api_key='+this.api_key)
-                   .then( response => {
-                    this.cast=response.data.cast.slice(0,5);
-                     for (var i = 0; i < this.cast.length; i++) {
-                       this.castList.push(this.cast[i].name);
-                     }
+                 .then( response => {
+                  this.getCastNames(response);
                    });
                  }
            },
@@ -189,10 +190,18 @@ this.RicercaSerie();
      }
    },
    onHoverSerie(){
-  this.RicercaBaseSerie();
+     if(this.searchActive==false){
+  this.RicercaBaseSerie();}
+  else {
+  this.RicercaSerie();
+  }
   },
   onHoverFilm(){
- this.RicercaBaseFilms();
+    if(this.searchActive==false){
+ this.RicercaBaseFilms();}
+ else {
+ this.RicercaFilms();
+ }
 },
  RicercaBase(){
 this.RicercaBaseFilms()
@@ -225,10 +234,7 @@ axios
   .then( response => {
     this.series=response.data.results;
     // this.products=this.products.concat(this.series);
-    console.log(this.series);
-    console.log(this.films);
     this.products=[...this.products,...this.series];
-    console.log(this.products)
   })
 
 },
