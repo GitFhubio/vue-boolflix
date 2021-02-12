@@ -22,6 +22,7 @@ this.RicercaSerie();
     RicercaFilms(){
        this.products=[];
         axios
+        // prova di chiamata axios get fatta con oggetto
           .get(this.endpoint+'/search/movie',
            {
              params:{
@@ -102,17 +103,14 @@ this.RicercaSerie();
      },
 
      getCredits(product){
-       // qui tutto il passaggio di consegne self this potevo evitarlo se ho capito bene poi vedo
-         let self=this;
-           self.castList=[];
-             if(self.isFilm(product)){
+           this.castList=[];
+             if(this.isFilm(product)){
                axios
                  .get(this.endpoint+'/movie/'+product.id+'/credits?api_key='+this.api_key)
                  .then( response => {
-                   self.cast=response.data.cast.slice(0,5);
-                   console.log(self.cast);
-                   for (var i = 0; i < self.cast.length; i++) {
-                     self.castList.push(self.cast[i].name);
+                   this.cast=response.data.cast.slice(0,5);
+                   for (var i = 0; i < this.cast.length; i++) {
+                     this.castList.push(this.cast[i].name);
                    }
                  })
                } else{
@@ -120,34 +118,32 @@ this.RicercaSerie();
                  axios
                  .get(this.endpoint+'/tv/'+product.id+'/credits?api_key='+this.api_key)
                    .then( response => {
-                    self.cast=response.data.cast;
-                     for (var i = 0; i < self.cast.length; i++) {
-                       self.castList.push(self.cast[i].name);
+                    this.cast=response.data.cast.slice(0,5);
+                     for (var i = 0; i < this.cast.length; i++) {
+                       this.castList.push(this.cast[i].name);
                      }
                    });
                  }
            },
            getGenresList() {
-             let self=this;
              axios
              .get(this.endpoint+'/genre/movie/list?api_key='+this.api_key)
              .then(response => {
-
-             self.genresList=response.data.genres;
+             this.genresList=[...this.genresList,...response.data.genres];
              });
              axios
              .get(this.endpoint+'/genre/tv/list?api_key='+this.api_key)
              .then(response => {
-             self.genresList=self.genresList.concat(response.data.genres);
-              console.log(self.genresList);
-               self.genresList.forEach((item, i) => {
-                   if (!self.genres.includes(item.name)){
-                     self.genres.push(item.name);
+             this.genresList=[...this.genresList,...response.data.genres];
+              // console.log(this.genresList);
+               this.genresList.forEach((item, i) => {
+                   if (!this.genres.includes(item.name)){
+                     this.genres.push(item.name);
                    }
                });
 
            })
-           console.log(self.genres);
+           // console.log(this.genres);
      },
      getProductGenre(product){
      let productgenresList = [];
@@ -159,7 +155,7 @@ this.RicercaSerie();
        });
 
      });
-     console.log (productgenresList);
+     // console.log (productgenresList);
      return productgenresList.join(', ')
 
    },
@@ -168,7 +164,6 @@ this.RicercaSerie();
        return true;
      } else {
      let array= this.getProductGenre(product).split(', ');
-     console.log(array);
       if (array.includes(this.selected)){
         return true;
       } else {
