@@ -2,7 +2,7 @@ let app = new Vue({
   el: "#root",
   data: {
     search:"",
-    array_lang:['it','en','fr','es','hr','zh','ja'],
+    // array_lang:['it','en','fr','es','hr'],
     films:[],
     series:[],
     genres:[],
@@ -15,39 +15,25 @@ let app = new Vue({
    endpoint:'https://api.themoviedb.org/3',
   },
   methods:{
-  Ricerca(){
-this.RicercaFilms()
-this.RicercaSerie();
-},
-    RicercaFilms(){
-       this.products=[];
+
+    Ricerca(){
+      this.products=[];
         axios
-          .get(this.endpoint+'/search/movie',
-           {
-             params:{
-               api_key:this.api_key,
-               query:this.search,
-             }
-           })
+          .get(this.endpoint+'/search/movie?api_key='+this.api_key +'&query='+this.search)
           .then( response => {
             this.films=response.data.results;
-               // this.products=this.products.concat(this.films);
-            this.products=[...this.products,...this.films];
+          this.products=this.products.concat(this.films);
           })
-  },
-  RicercaSerie(){
-  this.products=[];
-    axios
-      .get(this.endpoint+'/search/tv?api_key='+this.api_key +'&query='+this.search)
-      .then( response => {
-        this.series=response.data.results;
-        // this.products=this.products.concat(this.series);
-        console.log(this.series);
-        console.log(this.films);
-        this.products=[...this.products,...this.series];
-        console.log(this.products)
-      })
 
+          axios
+            .get(this.endpoint+'/search/tv?api_key='+this.api_key +'&query='+this.search)
+            .then( response => {
+              this.series=response.data.results;
+              console.log(this.series);
+              console.log(this.films);
+              this.products=this.products.concat(this.series);
+              console.log(this.products)
+            })
   },
       imageGenerator(item){
         // per mettere locandina
@@ -67,28 +53,28 @@ this.RicercaSerie();
        getFlag(item){
        //   ero partito con l'idea di farmi array di bandiere con
        // bandiere scaricate in img ma poi ho preso direttamente link
-       if (this.array_lang.includes(item.original_language)){
-         return true;}
-         else{return false}
-       // let language=item.original_language;
-       // switch (language){
-       //  case 'en':
-       //   language='gb';
-       //   break;
-       //   case 'ja':
-       //    language='jp';
-       //    break;
-       //    case 'fa':
-       //     language='ir';
-       //     break;
-       //     case 'da':
-       //      language='dk';
-       //      break;
-       //      case 'zh':
-       //       language='cn';
-       //       break;
-       //  }
-       //  return 'https://flagcdn.com/48x36/'+language+'.png';
+       // if (this.array_lang.includes(item.original_language)){
+       //   return true;}
+       //   else{return false}
+       let language=item.original_language;
+       switch (language){
+        case 'en':
+         language='gb';
+         break;
+         case 'ja':
+          language='jp';
+          break;
+          case 'fa':
+           language='ir';
+           break;
+           case 'da':
+            language='dk';
+            break;
+            case 'zh':
+             language='cn';
+             break;
+        }
+        return 'https://flagcdn.com/48x36/'+language+'.png';
        // return 'https://www.countryflags.io/'+x+'/flat/64.png'
      },
        // https://dmitripavlutin.com/check-if-object-has-property-javascript/
@@ -175,13 +161,7 @@ this.RicercaSerie();
         return false;
       }
      }
-   },
-   onHoverSerie(){
-  this.RicercaSerie();
-  },
-  onHoverFilm(){
- this.RicercaFilms();
-  }
+   }
 
       }
       ,

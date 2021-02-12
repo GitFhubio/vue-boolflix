@@ -16,15 +16,7 @@
   <body>
     <div id="root">
 <header class="flex">
-<div class="nav-left flex">
 <img class="logo" src="img/logo.png" alt="">
-<ul class="categorie flex">
-  <li @click="onHoverSerie">Serie TV</li>
-  <li @click="onHoverFilm">Film</li>
-<li>Aggiunti di recente</li>
-<li>La mia Lista</li>
-</ul>
-</div>
   <div class="searchbar">
     <select class="" name="" v-model="selected">
       <option>all</option>
@@ -34,7 +26,6 @@
   </div>
 </header>
 <main class="flex">
-  <div class="inner flex">
 <div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)" v-if="isgenreinList(product)">
 <div v-if="product.poster_path == null">
   <h3 v-if="isFilm(product)">
@@ -60,18 +51,17 @@
     <div class="stars">
   <strong>Voto:</strong><i v-for="i in getRate(product)" class="fas fa-star" style="color:yellow;"></i><i v-for="i in (5-getRate(product))" class="far fa-star" style="color:yellow;"></i>
     </div>
-    <div class="flag" v-if="getFlag(product)" >
-  <img style="width:70px;height:auto;" :src="'png/'+product.original_language+'.png'">
-    </div>
- <div v-else><strong>Language:</strong> {{product.original_language.toUpperCase()}}</div>
+  <img style="width:30px;height:auto;" :src="getFlag(product)">
+   <!-- v-if="getFlag(product)"  -->
+ <!-- <img v-else style="width:20px;height:20px;" :src="`img/notfound.png`"> -->
  <p v-if="castList.length>0"><strong>Cast:</strong> {{castList.join(', ')}}</p>
  <p v-if="product.overview"><strong>Overview:</strong> {{product.overview}}</p>
   </div>
   </div>
-</div>
 </main>
     </div>
     <!-- js -->
     <script src="js/main.js"></script>
   </body>
 </html>
+
