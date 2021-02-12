@@ -2,7 +2,25 @@ let app = new Vue({
   el: "#root",
   data: {
     search:"",
-    array_lang:['it','en','fr','es','pt','hr','zh','ja','de','be','ru','sv','hi','ms','ko','da','fa'],
+    array_lang:[
+      'it',
+      'en',
+      'fr',
+      'es',
+      'pt',
+      'hr',
+      'zh',
+      'ja',
+      'de',
+      'be',
+      'ru',
+      'sv'
+      ,'hi'
+      ,'ms'
+      ,'ko'
+      ,'da'
+      ,'fa'
+    ],
     films:[],
     series:[],
     genres:[],
@@ -114,7 +132,6 @@ this.RicercaSerie();
                    }
                  })
                } else{
-
                  axios
                  .get(this.endpoint+'/tv/'+product.id+'/credits?api_key='+this.api_key)
                    .then( response => {
@@ -172,16 +189,54 @@ this.RicercaSerie();
      }
    },
    onHoverSerie(){
-  this.RicercaSerie();
+  this.RicercaBaseSerie();
   },
   onHoverFilm(){
- this.RicercaFilms();
-  }
+ this.RicercaBaseFilms();
+},
+ RicercaBase(){
+this.RicercaBaseFilms()
+this.RicercaBaseSerie();
+},
+RicercaBaseFilms(){
+   this.products=[];
+    axios
+    // prova di chiamata axios get fatta con oggetto
+      .get(this.endpoint+'/movie/popular',
+       {
+         params:{
+           api_key:this.api_key,
+         }
+       })
+      .then( response => {
+        this.films=response.data.results;
+           // this.products=this.products.concat(this.films);
+        this.products=[...this.products,...this.films];
+      })
+},
+RicercaBaseSerie(){
+this.products=[];
+axios
+  .get(this.endpoint+'/tv/popular', {
+           params:{
+             api_key:this.api_key,
+           }
+         })
+  .then( response => {
+    this.series=response.data.results;
+    // this.products=this.products.concat(this.series);
+    console.log(this.series);
+    console.log(this.films);
+    this.products=[...this.products,...this.series];
+    console.log(this.products)
+  })
+
+},
 
       }
       ,
       mounted(){
-
+        this.RicercaBase();
         this.getGenresList();
       }
 
