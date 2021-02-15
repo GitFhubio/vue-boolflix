@@ -6,8 +6,6 @@
     <title>Boolflix</title>
     <!-- css -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- axios -->
@@ -17,12 +15,9 @@
   </head>
   <body>
     <div id="root">
-<div class="charger" v-if="visible==false">
-<i class="fas fa-circle-notch"></i>
-</div>
 <header class="flex">
 <div class="nav-left flex">
-<img class="logo" src="img/logo.png" alt="" @click="refresh">
+<img class="logo" src="img/logo.png" alt="">
 <ul class="categorie flex">
   <li @click="onHoverSerie">Serie TV</li>
   <li @click="onHoverFilm">Film</li>
@@ -30,42 +25,17 @@
 <li>La mia Lista</li>
 </ul>
 </div>
-<div class="search flex">
-<i v-if="!showBar" class="fas fa-search" @click="toggleSearch"></i>
-<i v-else class="fas fa-times" @click="toggleSearch"></i>
-  <div v-if="showBar" class="searchbar">
-    <input type="text" name="" placeholder="Cerca..." v-model="search" @keyup="Ricerca">
+  <div class="searchbar">
     <select class="" name="" v-model="selected">
       <option>all</option>
       <option v-for="genre in genres">{{genre}}</option>
     </select>
-  </div>
+<input type="text" name="" placeholder="Cerca..." v-model="search" @keyup.enter="Ricerca">
   </div>
 </header>
-<div class="jumbotron" v-for="(product,index) in products" v-if="index==indexProduct" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }">
-  <div class="lay">
-  </div>
-  <div class="text flex">
-    <div class="top">
-    <ul v-if="isFilm(product)">
-    <li > {{product.title}} </li>
-    <li v-if="product.original_title!=product.title"> {{product.original_title}}</li>
-    </ul>
-    <ul v-else>
-    <li>{{product.name}}</li>
-      <li v-if="product.original_name!=product.name">{{product.original_name}}</li></ul>
-   <p class="overview" v-if="product.overview">{{product.overview}}</p>
-     </div>
-   <div class="buttons">
-     <a href="" class="play button"><i class="fas fa-play"></i> Riproduci</a> <a href="" class="addlist button"><i class="fas fa-plus"></i> La mia lista</a>
-   </div>
-    </div>
-    </div>
-<h1 v-if="searchActive==false || search==''" class="category-title">I più popolari su Netflix</h1>
-<h1 v-else class="category-title">Risultati per: {{search}}</h1>
 <main class="flex">
   <div class="inner flex">
-<div class="locandina" v-for="(product,index) in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)" v-if="isgenreinList(product)" @click="setBackground(index)">
+<div class="locandina" v-for="product in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)" v-if="isgenreinList(product)">
 <div v-if="product.poster_path == null">
   <h3 v-if="isFilm(product)">
     {{product.title}}
@@ -100,13 +70,6 @@
   </div>
 </div>
 </main>
-<footer class="flex">
-<ul class="flex">
-  <li><i class="fas fa-home"></i><span>Home</span></li>
-  <li><i class="fas fa-download"></i> <span>Download</span></li>
-  <li><i class="fas fa-bars"></i><span>Altro</span></li>
-</ul>
-</footer>
     </div>
     <!-- js -->
     <script src="js/main.js"></script>

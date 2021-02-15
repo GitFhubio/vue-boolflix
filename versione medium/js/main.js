@@ -2,9 +2,6 @@ let app = new Vue({
   el: "#root",
   data: {
     search:"",
-    visible:false,
-    showBar:false,
-    indexProduct:0,
     array_lang:[
       'it',
       'en',
@@ -38,12 +35,8 @@ let app = new Vue({
   },
   methods:{
   Ricerca(){
-    if(this.search==""){
-      this.searchActive=false;
-      this.RicercaBase();
-    }
 this.searchActive=true;
-this.RicercaFilms();
+this.RicercaFilms()
 this.RicercaSerie();
 },
     RicercaFilms(){
@@ -81,7 +74,7 @@ this.RicercaSerie();
         // per mettere locandina
         // https://www.themoviedb.org/talk/568e3711c3a36858fc002384
          let uri= 'https://image.tmdb.org/t/p/';
-         let size='w500';
+         let size='w342';
          let url_img=uri+size+item.poster_path;
          if(item.poster_path == null){
            url_img='img/nocopertina.png'
@@ -93,9 +86,31 @@ this.RicercaSerie();
              return Math.ceil(item.vote_average/2);
        },
        getFlag(item){
+       //   ero partito con l'idea di farmi array di bandiere con
+       // bandiere scaricate in img ma poi ho preso direttamente link
        if (this.array_lang.includes(item.original_language)){
          return true;}
          else{return false}
+       // let language=item.original_language;
+       // switch (language){
+       //  case 'en':
+       //   language='gb';
+       //   break;
+       //   case 'ja':
+       //    language='jp';
+       //    break;
+       //    case 'fa':
+       //     language='ir';
+       //     break;
+       //     case 'da':
+       //      language='dk';
+       //      break;
+       //      case 'zh':
+       //       language='cn';
+       //       break;
+       //  }
+       //  return 'https://flagcdn.com/48x36/'+language+'.png';
+       // return 'https://www.countryflags.io/'+x+'/flat/64.png'
      },
        // https://dmitripavlutin.com/check-if-object-has-property-javascript/
        // hasOwnProperty() mi permette di fare una distinzione tra serie e film sulla base di proprietà che hanno solo gli elementi dell'uno o dell'altro
@@ -106,8 +121,8 @@ this.RicercaSerie();
          return false;
        }
      },
-     getCastNames(response_ajax){
-      this.cast=response_ajax.data.cast.slice(0,5);
+     getCastNames(response){
+      this.cast=response.data.cast.slice(0,5);
        for (var i = 0; i < this.cast.length; i++) {
          this.castList.push(this.cast[i].name);
      }}
@@ -175,14 +190,14 @@ this.RicercaSerie();
      }
    },
    onHoverSerie(){
-     if(this.searchActive==false || this.search==""){
+     if(this.searchActive==false){
   this.RicercaBaseSerie();}
   else {
   this.RicercaSerie();
   }
   },
   onHoverFilm(){
-    if(this.searchActive==false || this.search==""){
+    if(this.searchActive==false){
  this.RicercaBaseFilms();}
  else {
  this.RicercaFilms();
@@ -207,9 +222,6 @@ RicercaBaseFilms(){
            // this.products=this.products.concat(this.films);
         this.products=[...this.products,...this.films];
       })
-      .catch(function(error){
-      document.getElementById('root').innerHTML="<h1>Ci scusiamo per il disservizio</h1>";
-      })
 },
 RicercaBaseSerie(){
 this.products=[];
@@ -224,57 +236,14 @@ axios
     // this.products=this.products.concat(this.series);
     this.products=[...this.products,...this.series];
   })
-  .catch(function(error){
-  document.getElementById('root').innerHTML="<h1>Ci scusiamo per il disservizio</h1>";
-  })
 
 },
-setBackground(index){
-  this.indexProduct=index;
-},
-toggleSearch(){
-  if(this.showBar==false){
-this.showBar=true;}
-else{this.showBar=false;}
-},
-refresh(){
-  location.reload();
-}
+
       }
       ,
       mounted(){
         this.RicercaBase();
         this.getGenresList();
-      },
-      created: function(){
-        setTimeout(() => {
-          this.visible = true;
-        }, 1500)
-      },
-
+      }
 
 });
-
-// in
-// mounted() {
-//   avrei potuto fare axios all con 3 get
-//   axios
-//   all([
-//     axios.get("https://api.themoviedb.org/3/genre/movie/list", {
-//       params: {
-//         api_key: this.api_key
-//       },
-//     }),
-//     axios.get("https://api.themoviedb.org/3/genre/tv/list", {
-//       params: {
-//         api_key: this.api_key
-//       },
-//     }),
-//     axios.get("https://api.themoviedb.org/3/trending/all/week", {
-//       params: {
-//         api_key: this.api_key
-//       },
-//     }),
-//   ])
-// .then(
-//   axios.spread((respMovie, respTv, trendingMedia) => {
