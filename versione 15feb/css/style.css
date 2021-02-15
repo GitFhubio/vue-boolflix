@@ -239,6 +239,8 @@ footer li:hover{
 } */
 .charger{
   position:absolute;
+  /* se voglio coprire pure header */
+  margin-top:-80px;
   z-index:9;
   width:100vw;
   height:100vh;
