@@ -2,6 +2,7 @@ let app = new Vue({
   el: "#root",
   data: {
     search:"",
+    visible:false,
     showBar:false,
     indexProduct:0,
     array_lang:[
@@ -244,7 +245,13 @@ refresh(){
       mounted(){
         this.RicercaBase();
         this.getGenresList();
-      }
+      },
+      // created: function(){
+      //   setTimeout(() => {
+      //     this.visible = true;
+      //   }, 1000)
+      // },
+
 
 });
 
