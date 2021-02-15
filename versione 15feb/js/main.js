@@ -76,7 +76,7 @@ this.RicercaSerie();
         // per mettere locandina
         // https://www.themoviedb.org/talk/568e3711c3a36858fc002384
          let uri= 'https://image.tmdb.org/t/p/';
-         let size='w342';
+         let size='w500';
          let url_img=uri+size+item.poster_path;
          if(item.poster_path == null){
            url_img='img/nocopertina.png'
