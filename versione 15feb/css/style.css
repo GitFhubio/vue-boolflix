@@ -184,7 +184,7 @@ background-color: #ccc;
 .addlist.button:hover{
 background-color: #606060;
 }
-.fa-search{
+.fa-search,.fa-times{
   color:white;
   padding-left:20px;
 }
@@ -235,7 +235,7 @@ footer li:hover{
   animation-name: example;
   animation-duration: 4s;
 } */
-/* 
+/*
 .charger i {
   font-size: 100px;
   position: absolute;

@@ -31,9 +31,8 @@
 </ul>
 </div>
 <div class="search flex">
-  <!-- v-if="!showBar" -->
-<i class="fas fa-search" @click="toggleSearch"></i>
-<!-- <i v-else style="color:white;" class="fas fa-times" @click="toggleSearch"></i> -->
+<i v-if="!showBar" class="fas fa-search" @click="toggleSearch"></i>
+<i v-else class="fas fa-times" @click="toggleSearch"></i>
   <div v-if="showBar" class="searchbar">
     <input type="text" name="" placeholder="Cerca..." v-model="search" @keyup="Ricerca">
     <select class="" name="" v-model="selected">
