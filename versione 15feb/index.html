@@ -55,7 +55,7 @@
    </div>
     </div>
     </div>
-<h1 v-if="searchActive==false" class="category-title">I più popolari su Netflix</h1>
+<h1 v-if="searchActive==false || search==''" class="category-title">I più popolari su Netflix</h1>
 <h1 v-else class="category-title">Risultati per: {{search}}</h1>
 <main class="flex">
   <div class="inner flex">

@@ -212,6 +212,9 @@ footer li{
   flex-direction: column;
   width:100px;
 }
+.logo:hover{
+  cursor:pointer;
+}
 footer li:hover{
     color:#fff;
     cursor:pointer;
