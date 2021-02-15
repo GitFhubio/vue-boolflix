@@ -61,6 +61,7 @@ main{
     line-height: 30px;
     flex-direction: column;
     overflow-y: auto;
+    transition:1s;
 }
 .layover:hover{
     opacity:1;
