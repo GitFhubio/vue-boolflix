@@ -38,7 +38,7 @@ let app = new Vue({
   methods:{
   Ricerca(){
 this.searchActive=true;
-this.RicercaFilms()
+this.RicercaFilms();
 this.RicercaSerie();
 },
     RicercaFilms(){
