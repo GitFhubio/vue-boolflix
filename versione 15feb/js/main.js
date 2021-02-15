@@ -247,3 +247,27 @@ refresh(){
       }
 
 });
+
+// in
+// mounted() {
+//   avrei potuto fare axios all con 3 get
+//   axios
+//   all([
+//     axios.get("https://api.themoviedb.org/3/genre/movie/list", {
+//       params: {
+//         api_key: this.api_key
+//       },
+//     }),
+//     axios.get("https://api.themoviedb.org/3/genre/tv/list", {
+//       params: {
+//         api_key: this.api_key
+//       },
+//     }),
+//     axios.get("https://api.themoviedb.org/3/trending/all/week", {
+//       params: {
+//         api_key: this.api_key
+//       },
+//     }),
+//   ])
+// .then(
+//   axios.spread((respMovie, respTv, trendingMedia) => {
