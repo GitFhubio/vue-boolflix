@@ -224,6 +224,9 @@ RicercaBaseFilms(){
            // this.products=this.products.concat(this.films);
         this.products=[...this.products,...this.films];
       })
+      .catch(function(error){
+      document.getElementById('root').innerHTML="<h1>Ci scusiamo per il disservizio</h1>";
+      })
 },
 RicercaBaseSerie(){
 this.products=[];
@@ -237,6 +240,9 @@ axios
     this.series=response.data.results;
     // this.products=this.products.concat(this.series);
     this.products=[...this.products,...this.series];
+  })
+  .catch(function(error){
+  document.getElementById('root').innerHTML="<h1>Ci scusiamo per il disservizio</h1>";
   })
 
 },

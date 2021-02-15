@@ -40,6 +40,7 @@
   <div class="lay">
   </div>
   <div class="text flex">
+    <div class="top">
     <ul v-if="isFilm(product)">
     <li > {{product.title}} </li>
     <li v-if="product.original_title!=product.title"> {{product.original_title}}</li>
@@ -48,6 +49,7 @@
     <li>{{product.name}}</li>
       <li v-if="product.original_name!=product.name">{{product.original_name}}</li></ul>
    <p class="overview" v-if="product.overview">{{product.overview}}</p>
+     </div>
    <div class="buttons">
      <a href="" class="play button"><i class="fas fa-play"></i> Riproduci</a> <a href="" class="addlist button"><i class="fas fa-plus"></i> La mia lista</a>
    </div>
