@@ -254,6 +254,9 @@ toggleSearch(){
 this.showBar=true;}
 else{this.showBar=false;}
 },
+refresh(){
+  location.reload();
+}
       }
       ,
       mounted(){
