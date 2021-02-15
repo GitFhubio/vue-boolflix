@@ -37,6 +37,10 @@ let app = new Vue({
   },
   methods:{
   Ricerca(){
+    if(this.search==""){
+      this.searchActive=false;
+      this.RicercaBase();
+    }
 this.searchActive=true;
 this.RicercaFilms();
 this.RicercaSerie();
@@ -192,14 +196,14 @@ this.RicercaSerie();
      }
    },
    onHoverSerie(){
-     if(this.searchActive==false){
+     if(this.searchActive==false || this.search==""){
   this.RicercaBaseSerie();}
   else {
   this.RicercaSerie();
   }
   },
   onHoverFilm(){
-    if(this.searchActive==false){
+    if(this.searchActive==false || this.search==""){
  this.RicercaBaseFilms();}
  else {
  this.RicercaFilms();

@@ -40,8 +40,8 @@ main{
   position:relative;
   color:#fff;
   margin:10px;
-  width:25vw;
-  height:calc(100vh - 480px);
+  width:24vw;
+  height:calc(100vh - 280px);
   border:1px solid #fff;
   background-position: center;
   background-size: cover;
@@ -153,7 +153,7 @@ flex-direction: column;
 .text .top{
   overflow-y:auto;
 }
-.layover::-webkit-scrollbar,.text .top::-webkit-scrollbar {
+html::-webkit-scrollbar,.layover::-webkit-scrollbar,.text .top::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */
     background: transparent;}  /* Optional: just make scrollbar invisible */
 .button {
@@ -199,4 +199,20 @@ input,select{
 }
 input::placeholder{
     color:#ccc;
+}
+footer{
+  height:100px;
+  align-items:center;
+  justify-content:center;
+}
+footer li{
+  color:#ccc;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  width:100px;
+}
+footer li:hover{
+    color:#fff;
+    cursor:pointer;
 }
