@@ -106,8 +106,8 @@ this.RicercaSerie();
          return false;
        }
      },
-     getCastNames(response){
-      this.cast=response.data.cast.slice(0,5);
+     getCastNames(response_ajax){
+      this.cast=response_ajax.data.cast.slice(0,5);
        for (var i = 0; i < this.cast.length; i++) {
          this.castList.push(this.cast[i].name);
      }}
