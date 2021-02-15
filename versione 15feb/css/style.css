@@ -20,6 +20,7 @@ header{
   left:0;
   width:100vw;
   position: fixed;
+  z-index:3;
   justify-content: space-between;
   align-items:center;
   height:80px;
@@ -177,10 +178,10 @@ html::-webkit-scrollbar,.layover::-webkit-scrollbar,.text .top::-webkit-scrollba
   background-color:#404040;
 }
 .play.button:hover{
-opacity:0.7;
+background-color: #ccc;
 }
 .addlist.button:hover{
-opacity:0.7;
+background-color: #606060;
 }
 .fa-search{
   color:white;
@@ -219,3 +220,17 @@ footer li:hover{
     color:#fff;
     cursor:pointer;
 }
+
+/* ripetizione keyframes per animations */
+/* @keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+
+.button {
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+} */
