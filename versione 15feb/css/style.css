@@ -1,0 +1,198 @@
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+body{
+  background-color: #2d3843;
+}
+.flex{
+  display:flex;
+}
+ul li{
+  list-style: none;
+}
+header{
+  top:0;
+  left:0;
+  width:100vw;
+  position: fixed;
+  justify-content: space-between;
+  align-items:center;
+  height:80px;
+  background-color: #000;
+  padding:0 20px;
+}
+.logo {
+  width:120px;
+  height:auto;
+  margin-right: 10px;
+}
+main{
+  overflow-x:auto;
+  width:100%;
+}
+.locandina{
+  overflow-x:hidden;
+  position:relative;
+  color:#fff;
+  margin:10px;
+  width:25vw;
+  height:calc(100vh - 480px);
+  border:1px solid #fff;
+  background-position: center;
+  background-size: cover;
+}
+
+.layover{
+  position:absolute;
+  top:0;
+  padding:30px 10px 0 10px;
+    display: flex;
+    opacity:0;
+    height:100%;
+    width:100%;
+    background-color: #000000e0;
+    color: white;
+    font-size:20px;
+    line-height: 30px;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.layover:hover{
+    opacity:1;
+
+}
+
+.flag{
+  margin:10px 0;
+  text-align: center;
+}
+/* https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll */
+
+h3{
+  word-spacing: 9999999px;
+  font-size: 35px;
+  transform: skewY(-3deg);
+  line-height: 80%;
+  padding-top: 20px;
+  padding-left: 10px;
+color: #72613c;
+text-transform: uppercase;
+text-shadow: 1px 1px 5px #fff;
+}
+
+.categorie{
+  align-items: center;
+}
+.nav-left{
+  line-height: 80px;
+  align-items: center;
+}
+.nav-left li{
+  padding:0 10px;
+  height:80px;
+  display:inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  color:white;
+}
+.nav-left li:hover{
+background-color: grey;
+}
+
+.jumbotron{
+  position:relative;
+  color:white;
+  margin-top:80px;
+  width:100%;
+  height:700px;
+  background-size:cover;
+  background-position: 0 -300px;
+  background-repeat: no-repeat;
+}
+
+.jumbotron li {
+  font-size: 60px;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin:30px 0;
+}
+.jumbotron p {
+  font-size: 30px;
+}
+.jumbotron .flex{
+  width:50%;
+flex-direction: column;
+}
+
+.category-title{
+  margin-top:20px;
+  margin-left:10px;
+  color:#fff;
+}
+
+.lay{
+  position:absolute;
+  background-color: black;
+  width:100%;
+  height:100%;
+  opacity:0.3;
+}
+.text{
+  overflow-y: auto;
+  padding:0 20px;
+  position:absolute;
+  width:100%;
+  height:100%;
+  z-index:2;
+}
+.layover::-webkit-scrollbar, .text::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;}  /* Optional: just make scrollbar invisible */
+.button {
+  margin-top:30px;
+  margin-right:10px;
+  height: 40px;
+  line-height: 40px;
+  min-width: 100px;
+  padding: 0 20px;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+}
+.play.button{
+  background-color: #fff;
+  color:black;
+}
+.addlist.button{
+  color: #fff;
+  background-color:#404040;
+}
+.play.button:hover{
+opacity:0.7;
+}
+.addlist.button:hover{
+opacity:0.7;
+}
+.fa-search{
+  color:white;
+  padding-left:20px;
+}
+.search{
+  align-items: center;
+margin-right: 30px;
+flex-direction: row-reverse;
+}
+input,select{
+  border-radius:5px;
+  color:#ccc;
+  padding:10px;
+  background-color: #404040;
+}
+input::placeholder{
+    color:#ccc;
+}
