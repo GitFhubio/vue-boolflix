@@ -246,11 +246,11 @@ refresh(){
         this.RicercaBase();
         this.getGenresList();
       },
-      // created: function(){
-      //   setTimeout(() => {
-      //     this.visible = true;
-      //   }, 1000)
-      // },
+      created: function(){
+        setTimeout(() => {
+          this.visible = true;
+        }, 1500)
+      },
 
 
 });

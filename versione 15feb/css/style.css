@@ -48,7 +48,9 @@ main{
   background-position: center;
   background-size: cover;
 }
-
+#root{
+  position:relative;
+}
 .layover{
   position:absolute;
   top:0;
@@ -235,10 +237,18 @@ footer li:hover{
   animation-name: example;
   animation-duration: 4s;
 } */
-/*
+.charger{
+  position:absolute;
+  z-index:9;
+  width:100vw;
+  height:100vh;
+  background-color: #000;
+}
 .charger i {
+  position:absolute;
+  color:#fff;
   font-size: 100px;
-  position: absolute;
+  z-index:10;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -250,7 +260,7 @@ footer li:hover{
           animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes rotate {
+ @-webkit-keyframes rotate {
   0% {
     transform: translate(-50%, -50%) rotate(0);
   }
@@ -266,4 +276,4 @@ footer li:hover{
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
-} */
+}
