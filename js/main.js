@@ -37,16 +37,16 @@ let app = new Vue({
    endpoint:'https://api.themoviedb.org/3',
   },
   methods:{
-  Ricerca(){
+   ricerca(){
     if(this.search==""){
       this.searchActive=false;
-      this.RicercaBase();
+      this.ricercaBase();
     }
 this.searchActive=true;
-this.RicercaFilms();
-this.RicercaSerie();
+this.ricercaFilms();
+this.ricercaSerie();
 },
-    RicercaFilms(){
+    ricercaFilms(){
        this.products=[];
         axios
         // prova di chiamata axios get fatta con oggetto
@@ -63,7 +63,7 @@ this.RicercaSerie();
             this.products=[...this.products,...this.films];
           })
   },
-  RicercaSerie(){
+  ricercaSerie(){
   this.products=[];
     axios
       .get(this.endpoint+'/search/tv?api_key='+this.api_key +'&query='+this.search)
@@ -118,7 +118,7 @@ this.RicercaSerie();
                axios
                  .get(this.endpoint+'/movie/'+product.id+'/credits?api_key='+this.api_key)
                  .then( response => {
-                 this.getCastNames();
+                 this.getCastNames(response);
                  })
                } else{
                  axios
@@ -176,23 +176,23 @@ this.RicercaSerie();
    },
    onHoverSerie(){
      if(this.searchActive==false || this.search==""){
-  this.RicercaBaseSerie();}
+  this.ricercaBaseSerie();}
   else {
-  this.RicercaSerie();
+  this.ricercaSerie();
   }
   },
   onHoverFilm(){
     if(this.searchActive==false || this.search==""){
- this.RicercaBaseFilms();}
+ this.ricercaBaseFilms();}
  else {
- this.RicercaFilms();
+ this.ricercaFilms();
  }
 },
- RicercaBase(){
-this.RicercaBaseFilms()
-this.RicercaBaseSerie();
+ ricercaBase(){
+this.ricercaBaseFilms()
+this.ricercaBaseSerie();
 },
-RicercaBaseFilms(){
+ricercaBaseFilms(){
    this.products=[];
     axios
     // prova di chiamata axios get fatta con oggetto
@@ -211,7 +211,7 @@ RicercaBaseFilms(){
       document.getElementById('root').innerHTML="<h1>Ci scusiamo per il disservizio</h1>";
       })
 },
-RicercaBaseSerie(){
+ricercaBaseSerie(){
 this.products=[];
 axios
   .get(this.endpoint+'/tv/popular', {
@@ -243,7 +243,7 @@ refresh(){
       }
       ,
       mounted(){
-        this.RicercaBase();
+        this.ricercaBase();
         this.getGenresList();
       },
       created: function(){

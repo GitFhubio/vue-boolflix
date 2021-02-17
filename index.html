@@ -34,7 +34,7 @@
 <i v-if="!showBar" class="fas fa-search" @click="toggleSearch"></i>
 <i v-else class="fas fa-times" @click="toggleSearch"></i>
   <div v-if="showBar" class="searchbar">
-    <input type="text" name="" placeholder="Cerca..." v-model="search" @keyup="Ricerca">
+    <input type="text" name="" placeholder="Cerca..." v-model="search" @keyup="ricerca">
     <select class="" name="" v-model="selected">
       <option>all</option>
       <option v-for="genre in genres">{{genre}}</option>
