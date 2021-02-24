@@ -45,8 +45,8 @@
 <div class="jumbotron" v-for="(product,index) in products" v-if="index==indexProduct" :style="{'background-image' : 'linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0.1) 100%), url(\'' + backGenerator(product) + '\')'}">
   <!-- "{ 'background-image' : 'url(\'' + backGenerator(product) + '\')' }" -->
 
-  <div class="lay">
-  </div>
+  <!-- <div class="lay">
+  </div> -->
   <div class="text flex">
     <div class="top">
     <ul v-if="isFilm(product)">
