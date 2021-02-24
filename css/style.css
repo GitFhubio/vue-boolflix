@@ -1,4 +1,4 @@
- *{
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -33,6 +33,51 @@ header{
   height:auto;
   margin-right: 10px;
 }
+
+
+.jumbotron{
+  position:relative;
+  color:white;
+  width:100%;
+  height:45vh;
+  background-color: black;
+  background-size:contain;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.jumbotron li {
+  font-size: 60px;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin:30px 0;
+}
+.jumbotron p {
+  font-size: 30px;
+}
+.jumbotron .flex{
+  width:60%;
+  flex-direction: column;
+}
+
+.lay{
+  position:absolute;
+  background-color: black;
+  width:100%;
+  height:100%;
+  opacity:0.3;
+}
+.text{
+  padding:0 20px;
+  position:absolute;
+  width:100%;
+  height:100%;
+  z-index:2;
+}
+.text .top{
+  overflow-y:auto;
+}
+
 .category{
   height:60px;
   line-height:60px;
@@ -65,20 +110,20 @@ main{
   position:absolute;
   top:0;
   padding:30px 10px 0 10px;
-    display: flex;
-    opacity:0;
-    height:100%;
-    width:100%;
-    background-color: #000000e0;
-    color: white;
-    font-size:20px;
-    line-height: 30px;
-    flex-direction: column;
-    overflow-y: auto;
-    transition:1s;
+  display: flex;
+  opacity:0;
+  height:100%;
+  width:100%;
+  background-color: #000000e0;
+  color: white;
+  font-size:20px;
+  line-height: 30px;
+  flex-direction: column;
+  overflow-y: auto;
+  transition:1s;
 }
 .layover:hover{
-    opacity:1;
+  opacity:1;
 
 }
 
@@ -95,9 +140,9 @@ h3{
   line-height: 80%;
   padding-top: 20px;
   padding-left: 10px;
-color: #72613c;
-text-transform: uppercase;
-text-shadow: 1px 1px 5px #fff;
+  color: #72613c;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px #fff;
 }
 
 .categorie{
@@ -116,129 +161,87 @@ text-shadow: 1px 1px 5px #fff;
   color:white;
 }
 .nav-left li:hover{
-background-color: grey;
+  background-color: grey;
 }
 
-.jumbotron{
-  position:relative;
-  color:white;
-  width:100%;
-  height:45vh;
-  background-color: black;
-  background-size:contain;
-  background-position: right;
-  background-repeat: no-repeat;
-}
-
-.jumbotron li {
-  font-size: 60px;
-  text-transform: uppercase;
-  font-weight: 900;
-  margin:30px 0;
-}
-.jumbotron p {
-  font-size: 30px;
-}
-.jumbotron .flex{
-  width:60%;
-flex-direction: column;
-}
-
-.lay{
-  position:absolute;
-  background-color: black;
-  width:100%;
-  height:100%;
-  opacity:0.3;
-}
-.text{
-  padding:0 20px;
-  position:absolute;
-  width:100%;
-  height:100%;
-  z-index:2;
-}
-.text .top{
-  overflow-y:auto;
-}
 html::-webkit-scrollbar,.layover::-webkit-scrollbar,.text .top::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;}  /* Optional: just make scrollbar invisible */
-.button {
-  margin-top:30px;
-  margin-bottom:10px;
-  margin-right:10px;
-  height: 40px;
-  line-height: 40px;
-  min-width: 100px;
-  padding: 0 20px;
-  border-radius: 5px;
-  display: inline-block;
-  text-align: center;
-}
-.play.button{
-  background-color: #fff;
-  color:black;
-}
-.addlist.button{
-  color: #fff;
-  background-color:#404040;
-}
-.play.button:hover{
-background-color: #ccc;
-}
-.addlist.button:hover{
-background-color: #606060;
-}
-.fa-search,.fa-times{
-  color:white;
-  padding-left:20px;
-}
-.search{
-  align-items: center;
-margin-right: 30px;
-flex-direction: row-reverse;
-}
-input,select{
-  border-radius:5px;
-  color:#ccc;
-  padding:10px;
-  background-color: #404040;
-}
-input::placeholder{
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;}  /* Optional: just make scrollbar invisible */
+  .button {
+    margin-top:30px;
+    margin-bottom:10px;
+    margin-right:10px;
+    height: 40px;
+    line-height: 40px;
+    min-width: 100px;
+    padding: 0 20px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+  }
+  .play.button{
+    background-color: #fff;
+    color:black;
+  }
+  .addlist.button{
+    color: #fff;
+    background-color:#404040;
+  }
+  .play.button:hover{
+    background-color: #ccc;
+  }
+  .addlist.button:hover{
+    background-color: #606060;
+  }
+  .fa-search,.fa-times{
+    color:white;
+    padding-left:20px;
+  }
+  .search{
+    align-items: center;
+    margin-right: 30px;
+    flex-direction: row-reverse;
+  }
+  input,select{
+    border-radius:5px;
     color:#ccc;
-}
-footer{
-width:100%;
-height:50px;
-justify-content: center;
-align-items:center;
-}
-footer ul{
-display:flex;
-justify-content: center;
-align-items:center;
-height:100%;
-width:100%;
-}
-footer li{
-display:flex;
-padding:0 20px;
-color:#ccc;
-justify-content: center;
-align-items:center;
-flex-direction: column;
-}
-.logo:hover{
-  cursor:pointer;
-}
-footer li:hover{
+    padding:10px;
+    background-color: #404040;
+  }
+  input::placeholder{
+    color:#ccc;
+  }
+  footer{
+    width:100%;
+    height:50px;
+    justify-content: center;
+    align-items:center;
+  }
+  footer ul{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:100%;
+    width:100%;
+  }
+  footer li{
+    display:flex;
+    padding:0 20px;
+    color:#ccc;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+  }
+  .logo:hover{
+    cursor:pointer;
+  }
+  footer li:hover{
     color:#fff;
     cursor:pointer;
-}
+  }
 
-/* ripetizione keyframes per animations */
-/* @keyframes example {
+  /* ripetizione keyframes per animations */
+  /* @keyframes example {
   0%   {background-color: red;}
   25%  {background-color: yellow;}
   50%  {background-color: blue;}
@@ -246,14 +249,14 @@ footer li:hover{
 }
 
 .button {
-  background-color: red;
-  animation-name: example;
-  animation-duration: 4s;
+background-color: red;
+animation-name: example;
+animation-duration: 4s;
 } */
 .charger{
   position:absolute;
   /* se voglio coprire pure header */
-  margin-top:-80px;
+  /* margin-top:-80px; non serve più perché ho usato sticky non fixed; */
   z-index:9;
   width:100vw;
   height:100vh;
@@ -268,14 +271,14 @@ footer li:hover{
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-animation-name: rotate;
-          animation-name: rotate;
+  animation-name: rotate;
   -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
- @-webkit-keyframes rotate {
+@-webkit-keyframes rotate {
   0% {
     transform: translate(-50%, -50%) rotate(0);
   }
