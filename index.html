@@ -42,7 +42,9 @@
   </div>
   </div>
 </header>
-<div class="jumbotron" v-for="(product,index) in products" v-if="index==indexProduct" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }">
+<div class="jumbotron" v-for="(product,index) in products" v-if="index==indexProduct" :style="{'background-image' : 'linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0.1) 100%), url(\'' + backGenerator(product) + '\')'}">
+  <!-- "{ 'background-image' : 'url(\'' + backGenerator(product) + '\')' }" -->
+
   <div class="lay">
   </div>
   <div class="text flex">
@@ -61,8 +63,10 @@
    </div>
     </div>
     </div>
+<div class="category">
 <h1 v-if="searchActive==false || search==''" class="category-title">I più popolari su Netflix</h1>
 <h1 v-else class="category-title">Risultati per: {{search}}</h1>
+</div>
 <main class="flex">
   <div class="inner flex">
 <div class="locandina" v-for="(product,index) in products" :style="{ 'background-image' : 'url(\'' + imageGenerator(product) + '\')' }" @mouseenter="getCredits(product)" v-if="isgenreinList(product)" @click="setBackground(index)">
@@ -101,7 +105,7 @@
 </div>
 </main>
 <footer class="flex">
-<ul class="flex">
+<ul>
   <li><i class="fas fa-home"></i><span>Home</span></li>
   <li><i class="fas fa-download"></i> <span>Download</span></li>
   <li><i class="fas fa-bars"></i><span>Altro</span></li>

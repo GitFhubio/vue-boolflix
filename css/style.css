@@ -20,7 +20,7 @@ header{
   top:0;
   left:0;
   width:100vw;
-  position: fixed;
+  position: sticky;
   z-index:3;
   justify-content: space-between;
   align-items:center;
@@ -33,17 +33,27 @@ header{
   height:auto;
   margin-right: 10px;
 }
+.category{
+  height:60px;
+  line-height:60px;
+}
+.category-title{
+  margin-left:10px;
+  color:#fff;
+}
+
 main{
   overflow-x:auto;
   width:100%;
+  height:calc(55vh - 190px);
 }
 .locandina{
   overflow-x:hidden;
   position:relative;
   color:#fff;
-  margin:10px;
-  width:24vw;
-  height:calc(100vh - 280px);
+  margin:0 0.5vw;
+  width:calc(100vw / 7 - 1vw);
+  height:100%;
   border:1px solid #fff;
   background-position: center;
   background-size: cover;
@@ -112,11 +122,11 @@ background-color: grey;
 .jumbotron{
   position:relative;
   color:white;
-  margin-top:80px;
   width:100%;
-  height:500px;
-  background-size:cover;
-  background-position: 0 -280px;
+  height:45vh;
+  background-color: black;
+  background-size:contain;
+  background-position: right;
   background-repeat: no-repeat;
 }
 
@@ -130,14 +140,8 @@ background-color: grey;
   font-size: 30px;
 }
 .jumbotron .flex{
-  width:50%;
+  width:60%;
 flex-direction: column;
-}
-
-.category-title{
-  margin-top:20px;
-  margin-left:10px;
-  color:#fff;
 }
 
 .lay{
@@ -205,16 +209,25 @@ input::placeholder{
     color:#ccc;
 }
 footer{
-  height:100px;
-  align-items:center;
-  justify-content:center;
+width:100%;
+height:50px;
+justify-content: center;
+align-items:center;
+}
+footer ul{
+display:flex;
+justify-content: center;
+align-items:center;
+height:100%;
+width:100%;
 }
 footer li{
-  color:#ccc;
-  display:flex;
-  align-items: center;
-  flex-direction: column;
-  width:100px;
+display:flex;
+padding:0 20px;
+color:#ccc;
+justify-content: center;
+align-items:center;
+flex-direction: column;
 }
 .logo:hover{
   cursor:pointer;
