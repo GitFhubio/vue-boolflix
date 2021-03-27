@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-todolist</title>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Ubuntu&display=swap" rel="stylesheet">
+    <!-- Fontawesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <!-- Vue -->
+    <!-- Axios -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <select class="" name="" v-model="selected">
+    <option value="All">All</option>
+<option v-for="category in categories" :value="category">{{category}}</option>
+  </select>
+  <input type="text" name="" value="" v-model="query" @keyup.enter="search()">
+  <div v-if="isGenreinList(product)" style="border:1px solid black;" v-for="(product,index) in products" @mouseenter="getCredits(product,index)">
+    <div v-if="isMovie(product)">
+    <p>{{product.title}}</p>
+    <p v-if="product.title!=product.original_title"
+    >{{product.original_title}}</p>
+    </div>
+    <div v-else>
+      <p>{{product.name}}</p>
+    <p v-if="product.original_name!=product.name">{{product.original_name}}</p></div>
+ <div v-for="i in getRatings(product)">
+    stellapiena
+ </div>
+ <div v-for="i in (5-getRatings(product))">
+  stellavuota
+ </div>
+ <p v-if="index==indexActive">{{castlist}}</p>
+ <p v-if="index==indexActive">{{getGenres(product).toString()}}</p>
+</div>
+</div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
