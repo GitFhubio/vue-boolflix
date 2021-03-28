@@ -92,19 +92,30 @@ axios
   .then(
 
     axios.spread((moviesResponse, seriesResponse) => {
-       this.genresArray=[];
        this.categories=[];
-         response=moviesResponse.data.genres.concat(seriesResponse.data.genres);
-         for (var i = 0; i < response.length; i++) {
-           if(!this.genresArray.includes(response[i])){
-             this.genresArray.push(response[i]);
-           }
-         }
-         for (var i = 0; i < response.length; i++) {
-           if(!this.categories.includes(response[i].name)){
-             this.categories.push(response[i].name);
-           }
-         }
+       // EVITARE DUPLICATI,ECMA MI AIUTA CON NEWSET
+         this.genresArray=moviesResponse.data.genres.concat(seriesResponse.data.genres);
+          moviesGenres=moviesResponse.data.genres.map((elem)=>{
+          return elem.name;
+          });
+          seriesGenres=seriesResponse.data.genres.map((elem)=>{
+          return elem.name;
+          });
+          // METODO1) |ECMA|
+        this.categories= [...new Set([...moviesGenres,...seriesGenres])];
+
+        // METODO2) |METODOELEGANTE VANILLA|
+        // this.categories=[...moviesGenres,...seriesGenres];
+        // this.categories=this.categories.filter((elem,index)=>{
+        //   // se ho fabio fabio fabio luca,ritorna fabio e luca perche indexoffabio quello è
+        //   return this.categories.indexOf(elem)==index
+        // });
+        // METODO3) |BASE|
+         // for (var i = 0; i < this.genresArray.length; i++) {
+         //   if(!this.categories.includes(this.genresArray[i].name)){
+         //     this.categories.push(this.genresArray[i].name);
+         //   }
+         // }
          console.log(this.genresArray);
          console.log(this.categories);
 
